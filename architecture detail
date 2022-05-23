@@ -1,0 +1,74 @@
+Architechture details:(Distributed non-clustered environment)
+
+1.Universal forwarder:Install splunk universal forwareder package. Only have CLI no GUI is there.(inputs.conf, outputs.conf)
+
+2. Heavy forwarder:(props.conf, transforms.conf)
+a>parsing(props.conf)
+
+This is Ankith. This is Nikhil. This is Subhradip.
+
+This is Ankith.
+
+This is Nikhil.
+
+This is Subhradip.
+
+This is Ankith, Ankith is 26 yrs old.
+This is Nikhil, Nikhil is 27 yrs old.
+
+This is Ankith.
+
+Ankith is 26 yrs old.
+
+This is Nikhil.
+
+Nikhil is 27yrs old.
+
+b>masking:
+Your acc XXXXXXXXX1234 has debited rs.3000.
+
+c>filtering(transforms.conf)
+
+Ankith logged in from 198.162.34.23
+
+Nikhil logged out from 198.162.34.24
+
+Subhradip logged out from 198.162.34.26.
+
+After filtering for logged out.
+Nikhil logged out from 198.162.34.24
+
+Subhradip logged out from 198.162.34.26.
+
+Indexer:(indexes.conf)
+Index is the path where we are going to store the data.
+
+LM: License master:
+a>License stacking:
+100gb/day + 50gb/day --->150gb/day
+
+b>License pooling:
+100 gb/day license.
+
+pool A: 80 gb/day: Idx
+pool B: 20 gb/day: SH, DS
+
+90gb data: 
+
+License limit exceeds > 5 times in a rolling period of 30 days.
+23 may ---> exceed limit
+
+1st june.
+4th june.
+15th june.
+20th june.
+23 th june.
+
+23 june-->
+
+< 6.5(splunk version) -->Indexing continues but cant search the data --> 'litsearch error'
+>= 6.5(splunk version) -->Indexing continues, you can search the data, but splunk can take legal action against you or your organization.
+
+License got expired --> indexing continues, but searches are blocked.
+
+LIcense master goes down --> >72 hrs then your indexing continues, searches blocked.
