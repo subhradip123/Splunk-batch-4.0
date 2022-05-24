@@ -1,0 +1,39 @@
+fields:
+
+Ankit lives in Hyderabad.
+Nikhil lives in Bangalore.
+Subhradip lives in Kolkata.
+
+Name:
+
+location:
+
+so field is an searchable name or value in splunk.
+
+
+commands:
+fields: Segregate the data against field name.
+.. | fields <field_name1> <FN 2>
+eg.
+index=_internal
+| fields clientip file
+
+.. | fields - <field_name>    [hifen acts as NOT]
+eg.
+index=_internal
+| fields - bytes
+
+search:
+searching a string:
+eg.
+index=_internal sourcetype="splunkd_ui_access" "HTTP"
+
+searching a field value:
+eg.
+index=_internal sourcetype="splunkd_ui_access" file="splunkd"
+
+index=_internal sourcetype="splunkd_ui_access" | search file="splunkd"
+
+index=_internal sourcetype="splunkd_ui_access" | search file IN ("splunkd")
+
+index=_internal sourcetype="splunkd_ui_access" | search file IN ("splunkd","control")
