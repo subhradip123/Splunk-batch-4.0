@@ -23,6 +23,11 @@ eg.
 index=_internal
 | fields - bytes
 
+Field names are case sensitive.
+Fields command supports wild card entry.
+Fields command is faster than table command.
+
+
 search:
 searching a string:
 eg.
