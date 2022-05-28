@@ -1,0 +1,58 @@
+timechart:
+It will show the values on the basis of time when the log generated.
+It can use all the func we used with stats command.
+we cant use multiple split by fields here.
+
+.. | timechart <func>(field_name) by <field_name2>
+eg.
+index=_internal sourcetype="splunkd_ui_access" | timechart count(method) by status
+
+If run for last 24 hours, it will show interval of 30 mins.
+If run for last 60 mins, it will show interval of 1 min.
+If run for last 15 hours, it will show interval of 10 sec.
+
+custom intervals:
+span is the attribute to make custom intervals.
+
+s-sec
+m-min
+h-hours
+d-day
+w-week
+mon-month
+
+.. | timechart <span=...> count
+eg.
+index=_internal sourcetype="splunkd_ui_access" | timechart span=2d count(method)
+
+what is null and other in timechart command?
+use query:
+index=_internal sourcetype="splunkd_ui_access" | timechart max(bytes) by file
+
+null: specify the label for the series that is created for event that do not contain the splitby field.
+
+Ankith is 26 years old.
+Anil is 27 years old.
+     is 26 years old.
+	 
+
+others: by default timechart returns top 10 field value as column. the remaining values lies into other.
+index=_internal sourcetype="splunkd_ui_access" | timechart max(bytes) by file limit=0
+
+
+omit null and other.
+attributes:
+usenull=false
+useother=false
+eg. index=_internal sourcetype="splunkd_ui_access" | timechart max(bytes) by file usenull=f useother=f
+
+fillnull:
+fill all the null values with zero.
+eg.
+index=_internal sourcetype="splunkd_ui_access" | timechart max(bytes) by file | fillnull
+
+fill the null values with a desired value:
+index=_internal sourcetype="splunkd_ui_access" | timechart max(bytes) by file | fillnull value="Unknown"
+
+
+
