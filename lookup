@@ -1,0 +1,31 @@
+lookups:
+
+Nikhil is associate engineer. His salery is 60k.
+Anil is Junior Engineer.
+Ankith is Splunk admin.
+
+
+Nikhil  50k
+Anil    45k
+Ankith  70k
+
+.. | inputlookup abc.csv   ---> show the contains of abc.csv
+.. | outputlookup abd.csv  --->write into abd.csv
+
+
+.. | lookup abc.csv <field_present_in_csv> as <field_to_be_match> output(replace data)/outputnew(it do not replace data) <which_field_to_show_from csv>
+
+
+task:
+use query
+index=_internal sourcetype=splunkd_ui_access 
+| table status 
+| dedup status
+join other fields from csv file.
+
+
+lookup definition:
+settings -->lookup --> lookup definition --> give a name,type=file_based,lookup file=select one
+
+automatic lookup:
+after creating look up definition,
