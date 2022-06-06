@@ -1,6 +1,8 @@
 Architechture details:(Distributed non-clustered environment)
 
 1.Universal forwarder:Install splunk universal forwareder package. Only have CLI no GUI is there.(inputs.conf, outputs.conf)
+inputs.conf: we ingest data.
+outputs.conf: to which instance data need to forward.
 
 2. Heavy forwarder:(props.conf, transforms.conf)
 a>parsing(props.conf)
